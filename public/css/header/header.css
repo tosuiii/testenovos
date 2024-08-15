@@ -1,0 +1,228 @@
+:root {
+    --primary-color: #013A40;
+    --secondary-color: #03A688;
+    --highlight-color: #4B4FA6;
+    --bg-color: #f4f4f4;
+    --text-color: #333;
+    --padding: 20px;
+    --border-radius: 8px;
+    --box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    margin: 0;
+    padding: 0;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    animation: fadeIn ease 1s;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+header {
+    background: var(--primary-color);
+    color: #fff;
+    padding: 10px 0 20px;
+    animation: slideDown ease 1s;
+}
+
+@keyframes slideDown {
+    from {
+        transform: translateY(-50%);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+header .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+header .logo {
+    font-weight: bold;
+    transition: transform 0.3s;
+}
+
+header .logo:hover {
+    transform: scale(1.1);
+}
+
+header .logo img {
+    margin-top: 10px;
+    height: 100px;
+}
+
+header nav ul {
+    list-style: none;
+    display: flex;
+    gap: 30px;
+    animation: slideRight ease 1s;
+}
+
+@keyframes slideRight {
+    from {
+        transform: translateX(-100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+header nav ul li a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 18px;
+    transition: color 0.3s, transform 0.3s;
+}
+
+header nav ul li a:hover {
+    color: var(--secondary-color);
+    transform: scale(1.1);
+}
+
+.menu-toggle {
+    display: none; /* Escondido por padrão */
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 24px;
+    color: #fff;
+    /* Adicione um padding se necessário para o botão */
+}
+
+.menu-icon::before {
+    content: "\2630"; /* Ícone de menu (três linhas horizontais) */
+}
+
+.banner {
+    position: relative;
+    text-align: center;
+    height: 400px;
+    width: 80%;
+    margin: 20px auto;
+    background-color: #fff;
+    border-radius: var(--border-radius);
+    overflow: hidden;
+    animation: zoomIn ease 1s;
+}
+
+@keyframes zoomIn {
+    from {
+        transform: scale(0.5);
+        opacity: 0;
+    }
+    to {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+.banner .overlay {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100%;
+    height: 100%;
+    background: url('../../img/image-top.jpg') no-repeat center center/cover;
+    z-index: 1;
+    border-radius: var(--border-radius);
+}
+
+.banner h1 {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 3;
+    font-size: 36px;
+    color: #fff;
+    font-family: Arial, sans-serif;
+    animation: slideUp ease 1s;
+}
+
+@keyframes slideUp {
+    from {
+        transform: translateY(-50%);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+.banner::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 2;
+}
+
+/* Media Queries for Responsiveness */
+@media (max-width: 768px) {
+    header .container {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    header .logo img {
+        height: 80px;
+    }
+
+    header nav ul {
+        flex-direction: column;
+        gap: 10px;
+        display: none;
+    }
+
+    header nav ul.active {
+        display: flex;
+    }
+
+    header nav ul li a {
+        font-size: 16px;
+    }
+
+    .menu-toggle {
+        display: block; /* Mostra o botão de menu em dispositivos móveis */
+    }
+}
+
+@media (max-width: 480px) {
+    header .logo img {
+        height: 60px;
+    }
+
+    header nav ul li a {
+        font-size: 14px;
+    }
+
+    .banner h1 {
+        font-size: 24px;
+    }
+}

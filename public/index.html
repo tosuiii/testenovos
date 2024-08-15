@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Simulação de Empréstimo Rural com as melhores taxas e condições. Encontre a solução financeira ideal para o seu negócio no campo com a AgroCrédito Fácil."
+    />
+    <meta
+      name="keywords"
+      content="Empréstimo Rural, C A Crédito Agrícola rural, Simulação de Empréstimo, Taxas de Juros, C A Crédito Agrícola rural"
+    />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="author" content="C A Crédito Agrícola rural LTDA" />
+    <title>Simulação de Empréstimo Rural - C A Crédito Agrícola rural</title>
+    <link rel="stylesheet" href="./css/global.css" />
+  </head>
+
+  <body>
+    <header>
+      <div class="container">
+        <!-- <div class="logo"><img src="./img/assets/CreditoAgricola.png" alt="AgroCrédito Fácil"></div> -->
+        <button class="menu-toggle" aria-label="Toggle navigation">
+          <span class="menu-icon"></span>
+        </button>
+        <nav>
+          <ul>
+            <li><a href="#inicio">Início</a></li>
+            <li><a href="#simulacao">Simule e Contrate</a></li>
+            <li><a href="#sobre-nos">Sobre Nós</a></li>
+            <li><a href="#contato">Contato</a></li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+
+    <section id="inicio" class="banner">
+      <div class="overlay"></div>
+      <h1>Bem-vindo ao Simulador de Empréstimo da C A Crédito Agrícola rural</h1>
+    </section>
+
+    <section id="simulacao" class="about-us">
+      <div class="about-content">
+        <h2>Simulador de Empréstimo Rural da C A Crédito Agrícola rural</h2>
+        <p>
+          Descubra as melhores soluções financeiras para o seu negócio no campo
+          com o simulador de empréstimo rural da C A Crédito Agrícola rural.
+          Oferecemos taxas competitivas e um atendimento personalizado para
+          atender suas necessidades com eficiência e segurança.
+        </p>
+        <div class="slideshow-container">
+          <div class="slide-image active">
+            <img
+              class="img"
+              src="./img/assets/cordeioros1.png"
+              alt="Imagem de Cordeiro"
+            />
+          </div>
+          <div class="slide-image">
+            <img class="img" src="./img/assets/soja.png" alt="Imagem de Soja" />
+          </div>
+          <div class="slide-image">
+            <img
+              class="img"
+              src="./img/assets/vacas.png"
+              alt="Imagem de Vacas"
+            />
+          </div>
+        </div>
+        <!-- Tabela de Demonstração -->
+        <table class="demo-table">
+          <thead>
+            <tr>
+              <th>Valor do Empréstimo (R$)</th>
+              <th>Taxa de Juros (%)</th>
+              <th>Prazo (meses)</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>100.000</td>
+              <td>1,35</td>
+              <td>12</td>
+            </tr>
+            <tr>
+              <td>200.000</td>
+              <td>1,35</td>
+              <td>24</td>
+            </tr>
+            <tr>
+              <td>300.000</td>
+              <td>1,35</td>
+              <td>36</td>
+            </tr>
+            <tr>
+              <td>400.000</td>
+              <td>1,35</td>
+              <td>48</td>
+            </tr>
+            <tr>
+              <td>500.000</td>
+              <td>1,35</td>
+              <td>60</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="simulator-form">
+        <h2>Simule e Contrate</h2>
+        <p>
+          Utilize nosso simulador abaixo para calcular o valor do empréstimo e
+          receber uma proposta personalizada da C A Crédito Agrícola rural
+        </p>
+
+        <form id="loan-simulation-form">
+          <label for="cpf">CPF:</label>
+          <input
+            type="text"
+            id="cpf"
+            name="cpf"
+            placeholder="000.000.000-00"
+            required
+          />
+
+          <label for="fullName">Nome Completo:</label>
+          <input
+            type="text"
+            id="fullName"
+            name="fullName"
+            placeholder="Seu Nome Completo"
+            required
+          />
+
+          <label for="telephone">Telefone:</label>
+          <input
+            type="text"
+            id="telephone"
+            name="telephone"
+            placeholder="Seu Número de Telefone"
+            required
+          />
+
+          <label for="email">E-mail:</label>
+          <input
+            type="email"
+            id="email"
+            name="email"
+            placeholder="seuemail@exemplo.com"
+            required
+          />
+
+          <label for="loanAmount">Valor do Empréstimo (R$):</label>
+          <input
+            type="number"
+            id="loanAmount"
+            name="loanAmount"
+            placeholder="Valor Desejado"
+            required
+          />
+
+          <label for="term">Prazo (em meses):</label>
+          <input
+            type="number"
+            id="term"
+            name="term"
+            placeholder="12"
+            required
+            max="360"
+          />
+
+          <div class="consent-checkboxes">
+            <input
+              type="checkbox"
+              id="offer-sms-whatsapp-email"
+              name="offer-sms-whatsapp-email"
+            />
+            <label for="offer-sms-whatsapp-email"
+              >Desejo receber ofertas por SMS, WhatsApp e e-mail.</label
+            ><br />
+
+            <input type="checkbox" id="offer-daycoval" name="offer-daycoval" />
+            <label for="offer-daycoval"
+              >Aceito as condições da C A Crédito Agrícola rural</label
+            ><br />
+
+            <input type="checkbox" id="offer-partners" name="offer-partners" />
+            <label for="offer-partners"
+              >Concordo em receber ofertas dos parceiros da C A Crédito Agrícola rural</label
+            ><br />
+          </div>
+
+          <button type="submit">Simular</button>
+        </form>
+        <div id="result"></div>
+      </div>
+    </section>
+
+    <section class="benefits">
+      <div class="benefits-content">
+        <div class="benefits-left">
+          <h2>Benefícios do Empréstimo Rural com a C A Crédito Agrícola rural</h2>
+          <p>
+            O Crédito Rural da C A Crédito Agrícola rural oferece diversas
+            vantagens para quem atua no campo, seja pequeno produtor ou grande
+            agricultor. Entre os principais benefícios estão:
+          </p>
+          <ul>
+            <li>
+              <strong>Facilidade de Acesso:</strong> Condições especiais de
+              crédito adaptadas à realidade agrícola.
+            </li>
+            <li>
+              <strong>Taxas Competitivas:</strong> Juros diferenciados que
+              viabilizam investimentos com menor custo financeiro.
+            </li>
+            <li>
+              <strong>Flexibilidade de Pagamento:</strong> Prazos e condições
+              que se ajustam às safras e ciclo produtivo.
+            </li>
+            <li>
+              <strong>Investimento em Tecnologia:</strong> Possibilidade de
+              financiar equipamentos e inovações para aumento de produtividade.
+            </li>
+            <li>
+              <strong>Apoio Personalizado:</strong> Atendimento especializado
+              para orientação e suporte durante todo o processo de crédito.
+            </li>
+          </ul>
+        </div>
+        <div class="benefits-right">
+          <h2>Como Funciona o Fundo Garantidor da C A Crédito Agrícola rural</h2>
+          <p>
+            O Fundo Garantidor da C A Crédito Agrícola rural é uma iniciativa que
+            visa facilitar o acesso ao crédito para pequenas e médias empresas.
+            Funciona como uma garantia complementar aos financiamentos,
+            oferecendo:
+          </p>
+          <ul>
+            <li>
+              <strong>Garantia de Operações:</strong> Permite que empresas
+              tenham acesso a financiamentos com melhores condições e menores
+              taxas de juros.
+            </li>
+            <li>
+              <strong>Flexibilidade de Uso:</strong> Pode ser utilizado para
+              diversas finalidades, como capital de giro, investimentos em
+              infraestrutura e expansão do negócio.
+            </li>
+            <li>
+              <strong>Segurança e Credibilidade:</strong> A garantia proporciona
+              segurança aos bancos financiadores, incentivando o aumento da
+              oferta de crédito.
+            </li>
+            <li>
+              <strong>Facilidade de Contratação:</strong> Processo simplificado
+              e ágil para contratação do financiamento, favorecendo o acesso ao
+              crédito pelas empresas.
+            </li>
+          </ul>
+          <h3>Opções de Crédito com a C A Crédito Agrícola rural</h3>
+          <p>
+            A C A Crédito Agrícola rural oferece diversas opções de crédito para
+            empresas, adaptadas às diferentes necessidades e estágios de
+            crescimento. Conheça algumas delas:
+          </p>
+          <ul>
+            <li>
+              <strong>Crédito Rural C A Crédito Agrícola rural:</strong>
+              Financiamento de longo prazo para investimentos em infraestrutura
+              rural, com condições especiais.
+            </li>
+            <li>
+              <strong>Crédito Digital:</strong> Linhas de crédito ágeis e
+              flexíveis, ideais para capital de giro e financiamento de projetos
+              específicos.
+            </li>
+            <li>
+              <strong>Crédito Garantido:</strong> Operações garantidas, com
+              condições facilitadas e menor burocracia.
+            </li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section id="sobre-nos" class="about">
+      <div class="container">
+        <h2>Sobre a C A Crédito Agrícola rural LTDA</h2>
+        <p>
+          A C A Crédito Agrícola rural LTDA é uma empresa dedicada ao
+          desenvolvimento e suporte financeiro para o setor agrícola. Nosso
+          objetivo é fornecer soluções financeiras acessíveis e confiáveis para
+          apoiar o crescimento e a prosperidade das áreas rurais do Brasil.
+        </p>
+        <p>
+          Nosso compromisso é com a transparência, inovação e atendimento
+          personalizado. Trabalhamos em parceria com instituições financeiras
+          renomadas para oferecer opções de crédito que atendam às necessidades
+          específicas de nossos clientes e parceiros.
+        </p>
+        <p>
+          Estamos aqui para facilitar o acesso ao crédito rural, ajudando
+          agricultores e pequenos empreendedores a realizar seus projetos e
+          alcançar seus objetivos com segurança e eficiência.
+        </p>
+      </div>
+    </section>
+
+    <section id="contato" class="contact">
+      <div class="container">
+        <h2>Contato</h2>
+        <form id="contact-form" class="contact-form">
+          <label for="name">Nome:</label>
+          <input type="text" id="name" name="name" required />
+
+          <label for="email">Email:</label>
+          <input type="email" id="email" name="email" required />
+
+          <label for="message">Mensagem:</label>
+          <textarea id="message" name="message" required></textarea>
+
+          <button type="submit">Enviar</button>
+        </form>
+        <div id="contact-result"></div>
+      </div>
+    </section>
+
+    <footer>
+      <div class="footer-container">
+        <div class="footer-about">
+          <h3>Sobre a C. A. C A Crédito Agrícola rural LTDA</h3>
+          <p>
+            A C. A. C A Crédito Agrícola rural LTDA oferece soluções financeiras
+            acessíveis e confiáveis para apoiar o crescimento e a prosperidade
+            das áreas rurais do Brasil.
+          </p>
+        </div>
+        <div class="footer-contact">
+          <h3>Contato</h3>
+          <p><strong>Telefone:</strong> (45) 99154-3441</p>
+          <p><strong>Email:</strong> cacreditoagricolaoficial@gmail.com</p>
+          <!-- <p><strong>SAC:</strong> (11) 8765-4321</p> -->
+        </div>
+        <!-- <div class="footer-social">
+                    <h3>Siga-nos</h3>
+                    <ul>
+                        <li><a href="#"><img class="icons-footer" src="./img/assets/icon/facebook.svg" alt="Facebook"></a></li>
+                        <li><a href="#"><img class="icons-footer" src="./img/assets/icon/instagram.svg" alt="Instagram"></a></li>
+                        <li><a href="#"><img class="icons-footer" src="./img/assets/icon/whatsapp.svg" alt="WhatsApp"></a></li>
+                        <!-- <li><a href="#"><img src="img/linkedin-icon.png" alt="LinkedIn"></a></li> 
+                    </ul>
+                </div> -->
+      </div>
+      <div class="footer-bottom">
+        <p>
+          &copy; 2024 C A Crédito Agrícola rural LTDA. Todos os direitos
+          reservados.
+        </p>
+      </div>
+    </footer>
+
+    <a href="https://wa.me/554591543441" class="whatsapp-float" target="_blank">
+      <img src="./img/assets/icon/whatsapp.svg" alt="WhatsApp" />
+    </a>
+
+    <script src="./script/scripts.js"></script>
+    <script>
+      document
+        .getElementById("loan-simulation-form")
+        .addEventListener("submit", function (event) {
+          event.preventDefault();
+
+          const formData = new FormData(this);
+          const data = {};
+
+          formData.forEach((value, key) => {
+            data[key] = value;
+          });
+
+          fetch("/send-email", {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify(data),
+          })
+            .then((response) => response.text())
+            .then((text) => {
+              console.log("Resposta do servidor:", text);
+              try {
+              } catch (e) {
+                console.error("Erro ao processar a resposta JSON:", e);
+                document.getElementById("result").textContent =
+                  "Erro ao processar a resposta.";
+              }
+            })
+            .catch((error) => {
+              console.error("Erro:", error);
+              document.getElementById("result").textContent =
+                "Erro ao enviar a simulação.";
+            });
+        });
+    </script>
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        const contactForm = document.getElementById("contact-form");
+        const contactResult = document.getElementById("contact-result");
+
+        contactForm.addEventListener("submit", function (e) {
+          e.preventDefault();
+
+          const formData = new FormData(contactForm);
+
+          fetch("/send-contact-email", {
+            method: "POST",
+            body: JSON.stringify(Object.fromEntries(formData)),
+            headers: {
+              "Content-Type": "application/json",
+            },
+          })
+            .then((response) => response.json())
+            .then((data) => {})
+            .catch((error) => {
+              console.error("Erro:", error);
+              contactResult.innerHTML = "Erro ao enviar a mensagem.";
+            });
+        });
+      });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,128 @@
+:root {
+    --primary-color: #013A40;
+    --secondary-color: #03A688;
+    --highlight-color: #4B4FA6;
+    --bg-color: #f4f4f4;
+    --text-color: #333;
+    --padding: 20px;
+    --border-radius: 8px;
+    --box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.benefits {
+    background-color: #f9f9f9;
+    padding: 60px 0;
+}
+
+.benefits-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap; /* Permite que os itens quebrem para a próxima linha */
+}
+
+.benefits-left,
+.benefits-right {
+    flex: 1;
+    padding: 0 20px;
+    box-sizing: border-box; /* Inclui o padding e border no cálculo da largura */
+}
+
+.benefits-left h2,
+.benefits-right h2 {
+    color: #333;
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+}
+
+.benefits-left p,
+.benefits-right p {
+    line-height: 1.6;
+    color: #666;
+}
+
+.benefits-right ul {
+    list-style-type: none;
+    padding-left: 0;
+}
+
+.benefits-right ul li {
+    margin-bottom: 10px;
+}
+
+.benefits-right h3 {
+    color: #333;
+    font-size: 1.8rem;
+    margin-top: 30px;
+    margin-bottom: 10px;
+}
+
+/* Efeito de hover */
+.benefits-right ul li a {
+    color: #007bff;
+    transition: color 0.3s ease;
+}
+
+.benefits-right ul li a:hover {
+    color: #0056b3;
+}
+
+/* Efeito de transição para h2 */
+.benefits-left h2,
+.benefits-right h2 {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+.benefits-left h2.show,
+.benefits-right h2.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+    .benefits-content {
+        flex-direction: column;
+        padding: 0 var(--padding); /* Adiciona padding nas laterais */
+    }
+
+    .benefits-left,
+    .benefits-right {
+        width: 100%;
+        margin-right: 0;
+        padding: var(--padding);
+    }
+
+    .benefits-left h2,
+    .benefits-right h2 {
+        font-size: 2rem;
+    }
+
+    .benefits-left p,
+    .benefits-right p {
+        font-size: 1rem;
+    }
+
+    .benefits-right h3 {
+        font-size: 1.5rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .benefits-left h2,
+    .benefits-right h2 {
+        font-size: 1.8rem;
+    }
+
+    .benefits-left p,
+    .benefits-right p {
+        font-size: 0.9rem;
+    }
+
+    .benefits-right h3 {
+        font-size: 1.3rem;
+    }
+}
