@@ -55,8 +55,8 @@ document.addEventListener("DOMContentLoaded", function () {
   function validateLoanAmount() {
     const amount = loanAmountInput.value;
 
-    if (amount < 100000) {
-      alert("O valor mínimo do empréstimo é de R$ 100.000,00.");
+    if (amount < 5000) {
+      alert("O valor mínimo do empréstimo é de R$ 5.000.");
     }
   }
 
