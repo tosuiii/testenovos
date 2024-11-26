@@ -3,142 +3,108 @@ document.addEventListener("DOMContentLoaded", function () {
   const cpfInput = document.getElementById("cpf");
   const loanAmountInput = document.getElementById("loanAmount");
   const resultDiv = document.getElementById("result");
-  const menuToggle = document.querySelector(".menu-toggle");
-  const navMenu = document.querySelector("header nav ul");
-  const links = document.querySelectorAll("header nav ul li a");
 
-  // Função para exibir o resultado da simulação de empréstimo
   loanForm.addEventListener("submit", function (e) {
     e.preventDefault();
 
-    const amount = document.getElementById("loanAmount").value;
-    const term = document.getElementById("term").value;
+    // Obtém o valor do empréstimo em formato numérico
+    const rawValue = loanAmountInput.value
+      .replace("R$ ", "")
+      .replace(/\./g, "")
+      .replace(",", ".");
+    const amount = parseFloat(rawValue) || 0;
+    const term = parseInt(document.getElementById("term").value) || 0;
+
+    if (amount < 1000) {
+      alert("O valor do empréstimo deve ser maior ou igual a R$ 1.000,00.");
+      loanAmountInput.focus();
+      return;
+    }
 
     if (term > 360) {
       alert("O prazo máximo permitido é de 360 meses.");
       return;
     }
 
-    const interestRate = 0.05; // Taxa de juros de exemplo
-    const monthlyInterestRate = interestRate / 12;
+    // Taxa de juros de 1,35% ao mês
+    const monthlyInterestRate = 1.35 / 100;
+
+    // Cálculo do pagamento mensal (fórmula de juros compostos)
     const monthlyPayment =
-      (amount * monthlyInterestRate) /
-      (1 - Math.pow(1 + monthlyInterestRate, -term));
+      (amount * monthlyInterestRate * Math.pow(1 + monthlyInterestRate, term)) /
+      (Math.pow(1 + monthlyInterestRate, term) - 1);
 
+    // Exibição do resultado
     resultDiv.innerHTML = `<h3>Resultado da Simulação</h3>
-                                   <p>Valor do Empréstimo: R$ ${amount}</p>
-                                   <p>Prazo: ${term} meses</p>
-                                   <p>Pagamento Mensal: R$ ${monthlyPayment.toFixed(
-                                     2
-                                   )}</p>`;
+      <p>Valor do Empréstimo: R$ ${amount.toLocaleString("pt-BR", {
+        minimumFractionDigits: 2,
+      })}</p>
+      <p>Prazo: ${term} meses</p>
+      <p>Pagamento Mensal: R$ ${monthlyPayment
+        .toFixed(2)
+        .replace(".", ",")
+        .replace(/\B(?=(\d{3})+(?!\d))/g, ".")}</p>`;
   });
 
-  // Função para formatar o CPF
+  function formatToBRLCurrency(value) {
+    const onlyNumbers = value.replace(/\D/g, ""); // Remove tudo que não é número
+    if (onlyNumbers === "") return "R$ 0,00";
+    const number = parseFloat(onlyNumbers) / 100;
+    // Adiciona separadores de milhar e vírgula para decimais
+    return `R$ ${number
+      .toLocaleString("pt-BR", { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`;
+  }
+  
+  loanAmountInput.addEventListener("input", (event) => {
+    const cursorPosition = loanAmountInput.selectionStart; // Posição inicial do cursor
+    const rawValue = event.target.value; // Valor atual do campo
+    const formattedValue = formatToBRLCurrency(rawValue); // Valor formatado
+    loanAmountInput.value = formattedValue; // Atualiza o campo com o valor formatado
+  
+    const adjustment = formattedValue.length - rawValue.length; // Ajuste do cursor
+    const newCursorPosition = cursorPosition + adjustment;
+    setTimeout(() =>
+      loanAmountInput.setSelectionRange(newCursorPosition, newCursorPosition)
+    ); // Reposiciona o cursor no lugar correto
+  });
+
   function formatCPF(value) {
-    return value.replace(/(\d{3})(\d{3})(\d{3})(\d{2})/, "$1.$2.$3-$4");
-  }
+    const onlyNumbers = value.replace(/\D/g, "");
+    let formattedCPF = "";
 
-  // Função para validar e formatar o CPF
-  function validateAndFormatCPF() {
-    let cpfValue = cpfInput.value.replace(/\D/g, ""); // Remove qualquer coisa que não seja dígito
-
-    if (cpfValue.length === 11) {
-      cpfInput.value = formatCPF(cpfValue);
+    if (onlyNumbers.length > 3) {
+      formattedCPF += onlyNumbers.substring(0, 3) + ".";
     } else {
-      alert("CPF deve conter 11 dígitos.");
+      formattedCPF += onlyNumbers;
     }
-  }
 
-  // Evento de perda de foco para o campo CPF
-  cpfInput.addEventListener("blur", validateAndFormatCPF);
-
-  function validateLoanAmount() {
-    const amount = loanAmountInput.value;
-
-    if (amount < 5000) {
-      alert("O valor mínimo do empréstimo é de R$ 5.000.");
+    if (onlyNumbers.length > 6) {
+      formattedCPF += onlyNumbers.substring(3, 6) + ".";
+    } else if (onlyNumbers.length > 3) {
+      formattedCPF += onlyNumbers.substring(3);
     }
-  }
 
-  loanAmountInput.addEventListener("blur", validateLoanAmount);
-
-  // Função para salvar dados no Local Storage
-  function saveFormData(event) {
-    event.preventDefault();
-
-    const formData = {
-      cpf: cpfInput.value,
-      fullName: document.getElementById("fullName").value,
-      email: document.getElementById("email").value,
-      loanAmount: document.getElementById("loanAmount").value,
-      offerSmsWhatsappEmail: document.querySelector(
-        'input[name="offer-sms-whatsapp-email"]'
-      ).checked,
-      offerDaycoval: document.querySelector('input[name="offer-daycoval"]')
-        .checked,
-      offerPartners: document.querySelector('input[name="offer-partners"]')
-        .checked,
-    };
-
-    localStorage.setItem("loanFormData", JSON.stringify(formData));
-    alert("Dados salvos com sucesso!");
-  }
-
-  // Evento de envio do formulário
-  loanForm.addEventListener("submit", saveFormData);
-
-  // Slideshow
-  const images = document.querySelectorAll(".slide-image");
-  let currentIndex = 0;
-
-  function showNextImage() {
-    const currentImage = images[currentIndex];
-    const nextIndex = (currentIndex + 1) % images.length;
-    const nextImage = images[nextIndex];
-
-    currentImage.classList.remove("active");
-    nextImage.classList.remove("prev-enter");
-    nextImage.classList.remove("prev");
-    nextImage.classList.add("next-enter");
-
-    setTimeout(function () {
-      currentImage.classList.remove("prev");
-      currentImage.classList.remove("active");
-      nextImage.classList.remove("next-enter");
-      nextImage.classList.add("active");
-    }, 50); // Tempo muito curto para iniciar a transição
-
-    currentIndex = nextIndex;
-  }
-
-  // Inicializa a primeira imagem como visível
-  images[currentIndex].classList.add("active");
-  setInterval(showNextImage, 3000); // Troca de imagem a cada 3 segundos
-
-  // Adiciona o evento de clique ao botão de menu para alternar a visibilidade do menu
-  menuToggle.addEventListener("click", function () {
-    navMenu.classList.toggle("active");
-  });
-
-  // Função para rolagem suave
-  function smoothScroll(e) {
-    e.preventDefault();
-
-    const targetId = e.target.getAttribute("href").substring(1);
-    const targetSection = document.getElementById(targetId);
-
-    if (targetSection) {
-      const offsetTop = targetSection.offsetTop;
-
-      window.scrollTo({
-        top: offsetTop,
-        behavior: "smooth",
-      });
+    if (onlyNumbers.length > 9) {
+      formattedCPF += onlyNumbers.substring(6, 9) + "-";
+      formattedCPF += onlyNumbers.substring(9, 11);
+    } else if (onlyNumbers.length > 6) {
+      formattedCPF += onlyNumbers.substring(6);
     }
+
+    return formattedCPF;
   }
 
-  // Adiciona o evento de clique para rolagem suave aos links de navegação
-  links.forEach((link) => {
-    link.addEventListener("click", smoothScroll);
+  cpfInput.addEventListener("input", (event) => {
+    const cursorPosition = cpfInput.selectionStart;
+    const rawValue = event.target.value;
+    const formattedValue = formatCPF(rawValue);
+
+    const adjustment = formattedValue.length - rawValue.length;
+    cpfInput.value = formattedValue;
+
+    const newCursorPosition = cursorPosition + adjustment;
+    setTimeout(() =>
+      cpfInput.setSelectionRange(newCursorPosition, newCursorPosition)
+    );
   });
 });

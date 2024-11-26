@@ -14,39 +14,8 @@ app.use(express.static(path.join(__dirname, "public")));
 
 app.post("/send-email", (req, res) => {
   const {
-    cpf,
-    fullName,
-    telephone,
-    email,
-    loanAmount,
-    term,
-    offerSmsWhatsappEmail,
-    offerDaycoval,
-    offerPartners,
+    message
   } = req.body;
-
-  const interestRate = 0.05;
-  const monthlyInterestRate = interestRate / 12;
-  const monthlyPayment =
-    (loanAmount * monthlyInterestRate) /
-    (1 - Math.pow(1 + monthlyInterestRate, -term));
-  const totalLoanAmount = (monthlyPayment * term).toFixed(2);
-
-  const message = `CPF: ${cpf}\nNome Completo: ${fullName}\nTelefone: ${telephone}\nE-mail: ${email}\nValor do Empréstimo: R$ ${parseFloat(
-    loanAmount
-  ).toFixed(
-    2
-  )}\nValor do Empréstimo com Juros: R$ ${totalLoanAmount}\nQuantidade de Parcelas: ${parseInt(
-    term
-  )}\nValor da Parcela: R$ ${parseFloat(monthlyPayment).toFixed(
-    2
-  )}\nDeseja receber ofertas por SMS, WhatsApp e e-mail: ${
-    offerSmsWhatsappEmail ? "Sim" : "Não"
-  }\nAceita as condições do Banco Daycoval: ${
-    offerDaycoval ? "Sim" : "Não"
-  }\nConcorda em receber ofertas dos parceiros do Banco Daycoval: ${
-    offerPartners ? "Sim" : "Não"
-  }`;
 
   axios
     .post(
